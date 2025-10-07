@@ -111,6 +111,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
+
     }
     .skills span {
       border: 1px solid var(--accent);
@@ -119,6 +120,8 @@
       font-size: 0.9rem;
       transition: all 0.3s;
       cursor: pointer;
+      color: #00f0ff;
+
     }
     .skills span:hover {
       background: var(--accent);
