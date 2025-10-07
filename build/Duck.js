@@ -102,7 +102,7 @@ function dropMeme(x, y) {
   meme.style.left = (x + 50) + "px";
   meme.style.top = (y + 50) + "px";
   document.body.appendChild(meme);
-  setTimeout(() => meme.remove(), 8000);
+  setTimeout(() => meme.remove(), 5000);
 }
 
 // Cursor stealing (desktop)
@@ -129,7 +129,7 @@ document.addEventListener("touchmove", e => {
 // Toggle chaos mode
 toggle.addEventListener("click", () => {
   chaos = !chaos;
-  toggle.innerText = chaos ? "Banish Goose" : "Unleash Goose";
+  toggle.innerText = chaos ? "Banish Edward" : "Unleash Edward";
 
   if (chaos && geese.length === 0) {
     spawnGoose();
