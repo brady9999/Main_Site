@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hephaestus's Forge</title>
+    <link rel="icon" href="Images/Chromatic.png">
+    <link rel="stylesheet" href="Style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Hephaestus's Forge</h1>
+    </header>
+
+<div class="Tools">
+    <aside>
+        <h2>Tools</h2>
+        <button id="brushBtn">Brush</button>
+        <button id="eraserBtn">Eraser</button>
+        <button id="fillBtn">Fill</button>
+        <button id="colorPickerBtn">Color Picker</button>
+        <button id="saveBtn">Save</button>
+        <button id="resizeBtn">Resize Canvas</button>
+        <button id="resetBtn">Reset Canvas</button>
+        <label>Brush Color:
+          <input type="color" id="brushColor" value="#000000">
+        </label>
+        <label>Brush Size:
+          <input type="range" id="brushSize" min="1" max="50" value="2">
+        </label>
+    </aside>
+
+
+<div class="Canvas">
+  <div class="resizable-container">
+    <canvas id="MainCanvas" width="1050" height="590"></canvas>
+    <div class="resizer"></div>
+  </div>
+</div>
+
+    <div id="popup">
+        <div class="logo-container">
+            <img src="Images/Chromatic.png" alt="Chromatic Logo" class="pulogo">
+            <h2>Resize Your Canvas</h2>
+        </div> 
+        <div class="popup-content">
+             <label for="width">Width:</label>
+             <input type="number" id="width" value="1000" >
+             <label for="height">Height:</label>
+             <input type="number" id="height" value="700">
+            <button id="applySize">Apply</button>
+            <button id="closePopup">Cancel</button>
+        </div>
+    </div>
+
+    <div id="savePopup">
+        <div class="logo-container">
+            <img src="Images/Chromatic.png" alt="Chromatic Logo" class="pulogo">
+            <h2>Save Your Artwork</h2>
+        </div>
+        <div class="popup-content">
+         <label for="artName">Name your art:</label>
+         <input type="text" id="artName" placeholder="My Masterpiece">
+            <div style="margin-top: 10px;">
+                <button id="confirmSave">Save</button>
+                <button id="cancelSave">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

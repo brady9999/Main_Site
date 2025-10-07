@@ -1,0 +1,156 @@
+/* ===== Base Styles ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2C6E82;
+}
+
+header {
+    color: white;
+    text-align: center;
+    background-color: #2C6E82;
+    padding: 10px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* ===== Layout ===== */
+.Tools {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+
+aside {
+    background-color: #82572C;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Canvas {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    background-color: white;
+    border-radius: 1px;
+    display: block;
+}
+
+.resizer {
+    position:relative;
+    width: 15px;
+    height: 15px;
+    left: 100%;
+    bottom: 0;
+    cursor: se-resize;
+    background-color: #FFD700;
+    z-index: 10;
+}
+
+.resizable-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+/* ===== Buttons ===== */
+button {
+    background-color: #5F9B9D;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #4a7f81;
+}
+
+aside button.active {
+    background-color: #FFD700;
+    color: black;
+    font-weight: bold;
+}
+
+/* ===== Logo & Inputs ===== */
+.logo-container {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pulogo {
+    width: 100px;
+    height: 100px;
+}
+
+#artName {
+    color: white;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ===== Popups ===== */
+#popup,
+#savePopup {
+    display: none;
+    inset: 0;
+    background: rgba(142, 142, 142, 0.4);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 9999;
+}
+
+.popup-content {
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    min-height: 80px;
+}
+
+/* Specific popup colors */
+#popup .popup-content {
+    background: #82572C;
+}
+
+#savePopup .popup-content {
+    background: #5F9B9D;
+    width: 300px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .Tools {
+        flex-direction: column;
+        align-items: center;
+    }
+    aside {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
