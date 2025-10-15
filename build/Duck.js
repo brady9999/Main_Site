@@ -48,17 +48,27 @@ function spawnGoose() {
 function animateGoose(goose, note) {
   let x = parseFloat(goose.style.left) || 0;
   let y = parseFloat(goose.style.top) || 0;
-  let targetX = Math.random() * (document.documentElement.scrollWidth - 100);
-  let targetY = Math.random() * (document.documentElement.scrollHeight - 100);
+  let targetX, targetY;
+
+  function pickNewTarget() {
+    do {
+      targetX = Math.random() * (document.documentElement.scrollWidth - 100);
+      targetY = Math.random() * (document.documentElement.scrollHeight - 100);
+    } while (Math.abs(targetX - x) < 100 && Math.abs(targetY - y) < 100);
+  }
+
+  pickNewTarget();
 
   function step() {
     const dx = targetX - x;
     const dy = targetY - y;
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    if (dist < 2) {
-      targetX = Math.random() * (document.documentElement.scrollWidth - 100);
-      targetY = Math.random() * (document.documentElement.scrollHeight - 100);
+    if (dist < 20) {
+      // snap to target and pick a new one
+      x = targetX;
+      y = targetY;
+      pickNewTarget();
 
       if (chaos && Math.random() < 0.3) {
         note.innerText = notes[Math.floor(Math.random() * notes.length)];
@@ -66,14 +76,28 @@ function animateGoose(goose, note) {
       if (chaos && Math.random() < 0.2) honk.play();
     } else {
       const speed = 2;
+
+      // base movement toward target
       x += (dx / dist) * speed;
       y += (dy / dist) * speed;
+
+      // add chaos wander: sinusoidal wiggle + random jitter
+      if (chaos) {
+        x += Math.sin(Date.now() / 200) * 1.5; // smooth curve
+        y += Math.cos(Date.now() / 250) * 1.5;
+        if (Math.random() < 0.02) {
+          x += (Math.random() - 0.5) * 20; // sudden jitter
+          y += (Math.random() - 0.5) * 20;
+        }
+      }
+
       goose.style.left = x + "px";
       goose.style.top = y + "px";
 
       goose.style.transform = `rotate(${Math.sin(x / 20) * 10}deg)`;
 
       if (chaos && Math.random() < 0.01) leaveFootprint(x, y);
+      if (chaos && Math.random() < 0.005) dropMeme(x, y);
     }
 
     // Keep note following goose
