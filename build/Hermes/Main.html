@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermes's Notebook</title>
-    <link rel="stylesheet" href="Style.css">
-    <script src="Script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes's Notebook</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Hermes's Notebook</h1>
-    </header>
-    <main>
-        <div class="Note-header">
-            <input type="text" id="noteTitle" placeholder="Note Title" oninput="updateCurrentNotes()">
-            <button id="Pinbtn" class="pin-button" onclick="togglePin()">
-        </div>
+  <header>
+    <h1>Hermes's Notebook</h1>
+  </header>
 
-        <div class="Note-body">
-            <textarea id="noteContent" placeholder="Write your note here..." oninput="updateCurrentNote()"></textarea>
-        </div>
-        <div class="controls">
-            <span id="wordCount"># words</span>
-            <span id="note-date">Last edited: -</span>
-        </div>
-    </main>
+<div class="sidebar-actions">
+  <button id="addNoteButton" onclick="addNote()">Add Note</button>
+  <button id="clearNotesButton" onclick="clearNotes()">Clear All Notes</button>
+  <button id="viewTrashButton" onclick="renderTrash()">View Trash</button>
+  <button id="viewNotesButton" onclick="renderNotes()">View Notes</button>
+  <button id="clearTrashButton" onclick="clearTrash()">Clear Trash</button>
+</div>
 
-        <aside>
-        <input type="search" id="searchBar" placeholder="Search notes..." oninput="renderNotes()">
-        <div id="notesContainer"></div>
-        <button id="addNoteButton" onclick="addNote()">Add Note</button>
-        <button id="clearNotesButton" onclick="clearNotes()">Clear All Notes</button
-    </aside>
+
+
+  <main id="editor" class="disabled">
+    <div class="note-header">
+      <button id="Pinbtn" class="pin-button" onclick="togglePin()" aria-label="Pin note">📌</button>
+    </div>
+
+    <div class="note-body">
+     <input type="text" id="noteTitle" placeholder="Note Title" oninput="handleTyping()">
+     <textarea id="noteContent" placeholder="Write your note here..." oninput="handleTyping()"></textarea>
+    </div>
+
+    <div class="controls">
+      <span id="wordCount"># words</span>
+      <span id="note-date">Last edited: -</span>
+    </div>
+  </main>
 </body>
 </html>
